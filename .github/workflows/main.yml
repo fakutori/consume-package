@@ -31,7 +31,4 @@ jobs:
       run: dotnet build --no-restore
     - name: Run the application
       run: dotnet run --no-build
-    - name: Package
-      run: dotnet pack
-    - name: Publish
-      run: dotnet nuget push bin/Debug/Prey.1.0.0.nupkg -s https://nuget.pkg.github.com/fakutori/index.json
+
