@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  # Triggers when repository is starred.
+  watch: 
 
 jobs:
   build:
