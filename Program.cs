@@ -8,7 +8,7 @@ namespace Prey
     {
         static void Main(string[] args)
         {
-            string json = $"{ 'who': '{Greeted.Who}' }";
+            string json = $"{{ 'who': '{Greeted.Who}' }}";
 
             var who = FindTargetPerson(json);
 
