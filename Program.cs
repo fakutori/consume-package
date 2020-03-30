@@ -2,7 +2,7 @@
 using PackagePrivate;
 using Newtonsoft.Json;
 
-namespace Prey
+namespace ConsumePackage
 {
     public class Program
     {
