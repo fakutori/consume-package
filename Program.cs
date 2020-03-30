@@ -1,4 +1,5 @@
 ﻿using System;
+using PackagePrivate;
 using Newtonsoft.Json;
 
 namespace Prey
@@ -7,7 +8,7 @@ namespace Prey
     {
         static void Main(string[] args)
         {
-            string json = @"{ 'who': 'World' }";
+            string json = $"{ 'who': '{Greeted.Who}' }";
 
             var who = FindTargetPerson(json);
 
