@@ -22,11 +22,31 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+
+# Proof of concept "actions/dotnet-restore" action:
+# 1. Install nuget.org dependencies
+# 2. Install GPR dependencies
+# 3. Redact the GPR token
+    - name: Install nuget.org dependencies
+      run: dotnet restore
+      continue-on-error: true
+    - name: Setup .NET Core for GPR
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/fakutori/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.READ_PRIVATE_PACKAGES_TOKEN}}
-    - name: Install dependencies
+    - name: Install GPR dependencies
       run: dotnet restore
+    - name: Redact the GPR token
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        source-url: https://nuget.pkg.github.com/fakutori/index.json
+      env:
+        NUGET_AUTH_TOKEN: REDACTED
+
     - name: Build
       run: dotnet build --no-restore
     - name: Run the application
