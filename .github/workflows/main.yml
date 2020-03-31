@@ -25,6 +25,7 @@ jobs:
         dotnet-version: 3.1.101
     - name: Install nuget.org dependencies
       run: dotnet restore
+      continue-on-error: true
     - name: Setup .NET Core for GPR
       uses: actions/setup-dotnet@v1
       with:
