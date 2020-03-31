@@ -18,6 +18,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    # Encapsulate dotnet restore
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -27,6 +29,11 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.READ_PRIVATE_PACKAGES_TOKEN}}
     - name: Install dependencies
       run: dotnet restore
+    - name: Clear NUGET_AUTH_TOKEN
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
     - name: Build
       run: dotnet build --no-restore
     - name: Run the application
